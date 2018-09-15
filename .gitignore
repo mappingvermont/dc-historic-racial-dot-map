@@ -1,0 +1,9 @@
+*.tif
+*.shp
+*.cpg
+*.prj
+*.dbf
+*.sbn
+*.sbx
+*.shp.xml
+data/

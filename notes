@@ -1,0 +1,39 @@
+zoom 13 is likely the min zoom level for one person = one dot
+spatially joining 1940 points to z13, the max count for one tile is 172682
+this is less than the max for a tile (512*512 = 262144) but z12 is likely to be more
+    ^^ this is true if all dots were distributed equally, but looks like might have to be z25 for this to actually be true
+
+# racial dot map z13 tile (their max) example:
+http://demographics.virginia.edu/DotMap/tiles4/13/2339/3132.png
+
+# but mapbox pngs are 256*256 = 65536
+so will likely have to go to z14 (and maybe z15) to get actual representation
+
+will be easy to go beyond this (z14, z15) but anything less than z13 will have to be resampled
+spatially joining 256x256 tiles to points for 1940 - max is 60,277 points in a tile, so z14 could work
+
+### TODO
+
+figure out what pixel sizes are appropriate for what mapnik zoom levels
+1:1 doesn't look great - may have to use a z14 resolution at z12, etc
+
+rasters with cell size for z15 looks great at zoom level 14 on the map
+maybe try this (z+1) for every zoom level?
+
+also need to figure out opacity - if necessary can do the same pop | no-pop bilinear interpolation
+then recscale to 0 - 9, then tack this on to the last digit in the B band
+
+also need to figure out mapnik transparency / nodata
+
+do this all in rasterio??
+should be a lot cleaner . . . can maybe even just add the numpy arrays that way
+provided that they're all the same size
+
+nice because it's such a small dataset
+which i think is kind of the point of rasterio any way - tile-level work
+
+consume this local tile service in QGIS to see if the rasters line up with the points at high zoom levels
+good QC to make sure we are actually representing individual humans when possible
+
+zoom level 24 for 1940 has 642,152 points, but total pop is 663,091
+maybe use z25 for zoom level 16 and above? we'll see . . .
