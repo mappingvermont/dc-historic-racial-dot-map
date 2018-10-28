@@ -48,7 +48,7 @@ function init() {
     var map = L.map('map', {
         noWrap: true,
         minZoom: 3,
-        maxZoom: 16,
+        maxZoom: 18,
         maxBounds: worldBounds
     }).setView([38.8961, -76.9759], 12);
 
@@ -56,9 +56,12 @@ function init() {
     var hash = new L.Hash(map);
 
     // add the stamen basemap
-    L.tileLayer('http://tile.stamen.com/toner-lines/{z}/{x}/{y}.png').addTo(map)
-    L.tileLayer('http://tile.stamen.com/toner-labels/{z}/{x}/{y}.png').addTo(map)
-
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', 
+	       { attribution: `&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; 
+		              <a href="https://carto.com/attributions">CARTO</a>`,
+                 subdomains: 'abcd',
+         	 maxZoom: 18
+	       }).addTo(map); 
 
     // global function to redraw the tiles
     // called when the time slider or confidence value changes

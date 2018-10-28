@@ -28,8 +28,8 @@ def main():
     ras_dict, band_9 = create_band_9(ras_dict)
 
     # build blue and green bands
-    b = ras_dict[1950] + ras_dict[1990] + ras_dict[2000]
-    g = ras_dict[1960] + ras_dict[2010] + band_9
+    g = ras_dict[1950] + ras_dict[1990] + ras_dict[2000]
+    b = ras_dict[1960] + ras_dict[2010] + band_9
 
     # build the final 3 band tif; update raster profile accordingly
     final_tif = np.concatenate([r, g, b])

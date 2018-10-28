@@ -5,9 +5,19 @@
   }
   Canvas.prototype.getTile = function(coord, zoom, canvas, year) {
 
-	  //console.log('getting tile with min: ' + minDate + ', max: ' + maxDate + ', conf: ' + confArray)
+	var tileId = this._getTileId(coord.x, coord.y, zoom);
+        var objKeys = Object.keys(this.tiles);
+        for (var i = 0; i < objKeys.length; i++) {
+          if (this.tiles[objKeys[i]].z !== zoom) {
+	    delete this.tiles[objKeys[i]];
+	    }
+	  }
+	if (this.tiles[tileId]) {
+	  this._drawCanvasImage(this.tiles[tileId], year);
+	  return this.tiles[tileId].canvas;
+	}
 
-	var url = this._getUrl.apply(this, this._getTileCoords(coord.x, coord.y, zoom));
+	var url = this._getUrl.apply(this, [coord.x, coord.y, zoom]);
 	this._getImage(url, function(image) {
 	  var canvasData = {
 		  canvas: canvas,
@@ -16,7 +26,8 @@
 		  y: coord.y,
 		  z: zoom
 	  };
-
+	  
+	  this._cacheTile(canvasData);
 	  this._drawCanvasImage(canvasData, year);
 	}.bind(this));
 	return canvas;
@@ -38,24 +49,18 @@
 	xhr.send();
   };
   Canvas.prototype._dcColorPalette = [
-	  [0, 0, 0, 0],
-	  [115,178,255,255],
-	  [159,212,0,255],
-	  [245,190,12,255]
+	  [0, 0, 0, 0], // nodata - transparent
+	  [98,21,25,255], // white
+	  [22,60,79,255], // black
+	  [167,153,183,255], // other or multiple races
+	  [137,255,167,255], // asian/pacific islander
+	  [255,240,124,255] // hispanic
   ]
-  Canvas.prototype._getTileId = function(x, y, z) {
-	  return x + '_' + y + '_' + z;
-  };
-  Canvas.prototype._getZoomSteps = function(z) {
-	return z - this.dataMaxZoom;
-  };
   Canvas.prototype.pad = function(num) {
 	  	var s = '00' + num;
 			return s.substr(s.length - 3);
   };
   Canvas.prototype.decodeData = function(rgba, year) {
-
-	var digit = 0
 
 	switch(year) {
           case 1940: 
@@ -63,8 +68,43 @@
             break
 
           case 1950: 
+	    digit = parseInt(this.pad(rgba[1].toString())[0])
+	    lastGreen = parseInt(this.pad(rgba[2].toString())[2])
+
+	    if (digit == 0) {
+	      if ([2, 3].includes(lastGreen)) {
+		 digit = 3 }}
+	    break
+
+	  case 1960:
+	    digit = parseInt(this.pad(rgba[2].toString())[0])
+	    lastGreen = parseInt(this.pad(rgba[2].toString())[2])
+
+	    if (digit == 0) {
+	      if ([1, 2].includes(lastGreen)) {
+		 digit = 3 }}
+	    break
+
+          case 1970: 
             digit = parseInt(this.pad(rgba[0].toString())[1])
-            break;
+            break
+	    
+          case 1980: 
+            digit = parseInt(this.pad(rgba[0].toString())[2])
+            break
+	    
+          case 1990: 
+            digit = parseInt(this.pad(rgba[1].toString())[1])
+            break
+	      
+          case 2000: 
+            digit = parseInt(this.pad(rgba[1].toString())[2])
+            break
+	    
+          case 2010: 
+            digit = parseInt(this.pad(rgba[2].toString())[1])
+            break
+
 	}
 
 	return this._dcColorPalette[digit]
@@ -86,10 +126,9 @@
 	"use asm";
 	var canvas = canvasData.canvas,
 	  ctx    = canvas.getContext('2d'),
-	  image  = canvasData.image,
-	  zsteps = this._getZoomSteps(canvasData.z) | 0; // force 32bit int type
+	  image  = canvasData.image
 
-	ctx.clearRect(0, 0, 256, 256);                    // this will allow us to sum up the dots when the timeline is running
+	ctx.clearRect(0, 0, 256, 256); // this will allow us to sum up the dots when the timeline is running
 	ctx.drawImage(image, 0, 0);
 	var I = ctx.getImageData(0, 0, canvas.width, canvas.height);
 	this.filterTileImgdata(I.data, year);
@@ -98,18 +137,13 @@
   Canvas.prototype._getUrl = function(x, y, z) {
 	return this.urlTemplate.replace('%z', z).replace('%x', x).replace('%y', y);
   };
-  Canvas.prototype._getTileCoords = function(x, y, z) {
-	if (z > this.dataMaxZoom) {
-	  x = Math.floor(x / (Math.pow(2, z - this.dataMaxZoom)));
-	  y = Math.floor(y / (Math.pow(2, z - this.dataMaxZoom)));
-	  z = this.dataMaxZoom;
-	} else {
-	  y = (y > Math.pow(2, z) ? y % Math.pow(2, z) : y);
-	  if (x >= Math.pow(2, z)) {
-		x = x % Math.pow(2, z);
-	  } else if (x < 0) {
-		x = Math.pow(2, z) - Math.abs(x);
-	  }
-	}
-	return [x, y, z];
+
+  Canvas.prototype._getTileId = function(x, y, z) {
+	  	  return x + '_' + y + '_' + z;
+		    };
+
+  Canvas.prototype._cacheTile = function(canvasData) {
+    var tileId = this._getTileId(canvasData.x, canvasData.y, canvasData.z);
+    canvasData.canvas.setAttribute('id', tileId);
+    this.tiles[tileId] = canvasData;
   };
