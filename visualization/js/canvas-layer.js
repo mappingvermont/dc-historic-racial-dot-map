@@ -50,8 +50,8 @@
   };
   Canvas.prototype._dcColorPalette = [
 	  [0, 0, 0, 0], // nodata - transparent
-	  [98,21,25,255], // white
-	  [22,60,79,255], // black
+	  [251, 54, 64, 255], // white
+	  [56,153,201,255], // black
 	  [167,153,183,255], // other or multiple races
 	  [137,255,167,255], // asian/pacific islander
 	  [255,240,124,255] // hispanic

@@ -40,6 +40,7 @@ def main():
         dst.write(final_tif)
 
 
+
 def create_band_9(ras_dict):
 
     # build the third digit of the blue band
@@ -70,7 +71,7 @@ def create_band_9(ras_dict):
 
 def read_raster(year_directory, year, zoom_level):
     raster_dir = os.path.join(year_directory, str(year), 'rasters') 
-    input_ras = os.path.join(raster_dir, 'z{}_webmerc.tif'.format(zoom_level))
+    input_ras = os.path.join(raster_dir, 'z{}.tif'.format(zoom_level))
 
     print 'reading in {}'.format(input_ras)
 
@@ -85,8 +86,6 @@ def read_raster(year_directory, year, zoom_level):
         data[data == 255] = 0
 
     return data, profile
-
-
 
 
 if __name__ == '__main__':

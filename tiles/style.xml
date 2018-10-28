@@ -2,6 +2,9 @@
 <!DOCTYPE Map[]>
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"    maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34" >
 
+<!-- NB: when trying to figure out how to display specific rasters for zoom levels, this doc 
+     is really helpful: https://github.com/openstreetmap/mapnik-stylesheets/blob/master/zoom-to-scale.txt -->
+
 <Parameters>
   <Parameter name="bounds">-180,-85.05112877980659,180,85.05112877980659</Parameter>
   <Parameter name="center">0,0,2</Parameter>
@@ -12,30 +15,58 @@
 
 <Style name="z13_and_above" filter-mode="first" >
   <Rule>
+    <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <RasterSymbolizer>opacity="1"</RasterSymbolizer>
   </Rule>
 </Style>
-<Layer name="z13_and_above"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+<Layer name="z13_and_above" srs="+init=epsg:4326">
     <StyleName>z13_and_above</StyleName>
     <Datasource>
-       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z22_webmerc.tif</Parameter>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z14.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
     </Datasource>
   </Layer>
 
 <Style name="z14" filter-mode="first" >
   <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <RasterSymbolizer>opacity="1"</RasterSymbolizer>
+    <MaxScaleDenominator>40000</MaxScaleDenominator>
+    <MinScaleDenominator>30000</MinScaleDenominator>
+    <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
   </Rule>
 </Style>
-<Layer name="z14"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+<Layer name="z14" srs="+init=epsg:4326">
     <StyleName>z14</StyleName>
     <Datasource>
-       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z23_webmerc.tif</Parameter>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z15.tif</Parameter>
+       <Parameter name="type">gdal</Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="z15" filter-mode="first" >
+  <Rule>
+    <MaxScaleDenominator>20000</MaxScaleDenominator>
+    <MinScaleDenominator>10000</MinScaleDenominator>
+    <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
+  </Rule>
+</Style>
+<Layer name="z15" srs="+init=epsg:4326">
+    <StyleName>z15</StyleName>
+    <Datasource>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z16.tif</Parameter>
+       <Parameter name="type">gdal</Parameter>
+    </Datasource>
+  </Layer>
+
+<Style name="z16" filter-mode="first" >
+  <Rule>
+    <MaxScaleDenominator>9000</MaxScaleDenominator>
+    <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
+  </Rule>
+</Style>
+<Layer name="z16" srs="+init=epsg:4326">
+    <StyleName>z16</StyleName>
+    <Datasource>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z17.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
     </Datasource>
   </Layer>
