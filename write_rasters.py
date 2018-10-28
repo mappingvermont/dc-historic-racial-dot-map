@@ -20,12 +20,12 @@ def main():
     output_wgs84 = os.path.join(args.output_dir, 'z{}.tif'.format(args.zoom_level))
 
     cmd = ['gdal_rasterize', args.point_geojson, output_wgs84, '-a', 'rasVal', '-a_nodata', '255',
-           '-tr', degree_size, degree_size, '-co', 'COMPRESS=LZW', '-ts', width, height]
+           '-tr', degree_size, degree_size, '-co', 'COMPRESS=LZW', '-ts', width, height, '-ot', 'Byte']
     print cmd
     subprocess.check_call(cmd)
 
     output_webmerc = os.path.join(args.output_dir, 'z{}_webmerc.tif'.format(args.zoom_level))
-    cmd = ['gdalwarp', output_wgs84, output_webmerc, '-t_srs', 'EPSG:3857', '-co', 'COMPRESS=LZW']
+    cmd = ['gdalwarp', output_wgs84, output_webmerc, '-t_srs', 'EPSG:3857', '-co', 'COMPRESS=LZW', '-overwrite']
     print cmd
     subprocess.check_call(cmd)
 

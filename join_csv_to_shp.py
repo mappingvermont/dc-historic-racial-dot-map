@@ -19,21 +19,34 @@ def main():
     df = pd.read_csv(args.population_csv)
 
     # filter shp to only include DC
-    gdf = gdf[gdf.NHGISST == '110']
+    try:
+        gdf = gdf[gdf.NHGISST == '110']
+
+    # later block shapes (1990 on) are state specific already and don't have this field
+    except AttributeError:
+        pass
+
 
     # project input shp to WGS84
     gdf = gdf.to_crs({'init': 'epsg:4326'})
 
-    # filter df to only population fields
-    # files formatted so all population counts after the AREANAME field
-    area_name_idx = df.columns.get_loc('AREANAME')
-    census_categories = df.columns[10:].tolist()
+    try:
+        # filter df to only population fields
+        # files formatted so all population counts after the AREANAME field
+        area_name_idx = df.columns.get_loc('AREANAME')
+        census_categories = df.columns[10:].tolist()
+    
+        keep_fields = ['GISJOIN'] + census_categories + ['geometry']
+    
+        # join based on GISJOIN field
+        gdf = gdf[keep_fields]
 
-    keep_fields = ['GISJOIN'] + census_categories + ['geometry']
+    # block shapes don't have AREANAME or other garbage for some reason
+    except KeyError:
+        pass
 
-    # join based on GISJOIN field
+    # do the actual join
     gdf = pd.merge(gdf, df, on='GISJOIN')
-    gdf = gdf[keep_fields]
 
     if os.path.exists(args.output_geojson):
        os.remove(args.output_geojson) 

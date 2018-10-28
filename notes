@@ -37,3 +37,37 @@ good QC to make sure we are actually representing individual humans when possibl
 
 zoom level 24 for 1940 has 642,152 points, but total pop is 663,091
 maybe use z25 for zoom level 16 and above? we'll see . . .
+
+---
+
+NB: The census divides the year 1940 into White/Nonwhite. Historical estimates suggest that the vast majority of this population was Black. For visualization's sake, data will be rendered as such.
+
+---
+
+Encoding plan:
+
+Red band:
+1940: 0: nodata, 100: White, 200: Black
+1970: 0: nodata, 10: White, 20: Black, 30: other
+1980: 0: nodata, 1: White, 2: Black, 3: other, 4: Asian, 5: Hispanic - have to drop Native American given max digits 0-5
+
+Blue band:
+1950: 0: nodata or other, 100: White, 200: Black 
+1990: 0: nodata, 10: White, 20: Black, 30: other, 40: Asian, 50: Hispanic
+2000: 0: nodata, 1: White, 2: Black, 3: other, 4: Asian, 5: Hispanic
+
+Green band:
+1960: 0: nodata or other, 100: white, 200: black (will differentiate 0s later)
+2010: 0: nodata, 10: White, 20: Black, 30: other, 40: Asian, 50: Hispanic
+random: 0: nodata in both 1950 and 1960; 1: nodata in 1950, other in 1960; 2: other in 1950, nodata in 1960; 3: other in 1950 & 1960
+
+---
+
+How to download this data from the NHGIS.
+
+never an easy process, my current approach is as follows:
+1. go to https://data2.nhgis.org/main
+2. apply a year filter (e.g. 1980)
+3. apply a geographic filter (if 1980 and before census tract, otherwise block)
+4. ctrl+f for Race; if 1980 or after, look for a table called Spanish Origin and Race (or similar)
+

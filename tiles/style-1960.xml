@@ -14,7 +14,7 @@
   <Rule>
     <MinScaleDenominator>50000</MinScaleDenominator>
     <RasterSymbolizer>
-      <RasterColorizer default-mode="linear" default-color="white" epsilon="0.001">
+      <RasterColorizer default-mode="linear" epsilon="0.001">
         <stop color="rgb(115,178,255)" value = "0"  />
         <stop color="rgb(159,212,0)" value = "1"  />
         <stop color="rgb(255,0,0)" value = "2"  />
@@ -26,7 +26,7 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>z13_and_above</StyleName>
     <Datasource>
-       <Parameter name="file">/home/charlie/Proj-18/dc-historic-census/data/1960/rasters/z22_webmerc.tif</Parameter>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/1960/rasters/z22_webmerc.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
        <Parameter name="band">1</Parameter>
     </Datasource>
@@ -36,7 +36,7 @@
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <RasterSymbolizer>
-      <RasterColorizer default-mode="linear" default-color="white" epsilon="0.001">
+      <RasterColorizer default-mode="linear" epsilon="0.001">
         <stop color="rgb(115,178,255)" value = "0"  />
         <stop color="rgb(159,212,0)" value = "1"  />
         <stop color="rgb(255,0,0)" value = "2"  />
@@ -48,7 +48,7 @@
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>z14</StyleName>
     <Datasource>
-       <Parameter name="file">/home/charlie/Proj-18/dc-historic-census/data/1960/rasters/z23_webmerc.tif</Parameter>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/1960/rasters/z23_webmerc.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
        <Parameter name="band">1</Parameter>
     </Datasource>

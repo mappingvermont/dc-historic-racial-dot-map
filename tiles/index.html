@@ -25,7 +25,8 @@
 
            var hash = new L.Hash(mymap);
 
-	   var y1940 = L.tileLayer('http://localhost:8080/race-map-1940/{z}/{x}/{y}.png').addTo(mymap)
+	   var final = L.tileLayer('http://localhost:8080/race-map-final/{z}/{x}/{y}.png').addTo(mymap)
+	   var y1940 = L.tileLayer('http://localhost:8080/race-map-1940/{z}/{x}/{y}.png')
 	   var y1950 = L.tileLayer('http://localhost:8080/race-map-1950/{z}/{x}/{y}.png')
 	   var y1960 = L.tileLayer('http://localhost:8080/race-map-1960/{z}/{x}/{y}.png')
 
@@ -36,7 +37,8 @@
              pane: 'labels'
              }).addTo(mymap)
 
-	   L.control.layers({"1940": y1940, 
+	   L.control.layers({"final": final, 
+                             "1940": y1940, 
                              "1950": y1950, 
                              "1960": y1960}, null).addTo(mymap);
 

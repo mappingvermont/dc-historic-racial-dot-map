@@ -1,0 +1,16 @@
+{
+  "C0X001": {
+      "censusName": "White", 
+      "rasVal": 10
+    },
+  "C0X002": 
+    {
+      "censusName": "Black", 
+      "rasVal": 20
+    },
+  "C0X003": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 30
+    }
+}

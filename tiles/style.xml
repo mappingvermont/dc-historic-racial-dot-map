@@ -13,42 +13,30 @@
 <Style name="z13_and_above" filter-mode="first" >
   <Rule>
     <MinScaleDenominator>50000</MinScaleDenominator>
-    <RasterSymbolizer>
-      <RasterColorizer default-mode="linear" default-color="white" epsilon="0.001">
-        <stop color="rgb(115,178,255)" value = "100"  />
-        <stop color="rgb(159,212,0)" value = "200"  />
-      </RasterColorizer>
-    </RasterSymbolizer>
+    <RasterSymbolizer>opacity="1"</RasterSymbolizer>
   </Rule>
 </Style>
 <Layer name="z13_and_above"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>z13_and_above</StyleName>
     <Datasource>
-       <Parameter name="file">/home/charlie/Proj-18/dc-historic-census/data/1940/rasters/z22_webmerc.tif</Parameter>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z22_webmerc.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
-       <Parameter name="band">1</Parameter>
     </Datasource>
   </Layer>
 
 <Style name="z14" filter-mode="first" >
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <RasterSymbolizer>
-      <RasterColorizer default-mode="linear" default-color="white" epsilon="0.001">
-        <stop color="rgb(115,178,255)" value = "100"  />
-        <stop color="rgb(159,212,0)" value = "200"  />
-      </RasterColorizer>
-    </RasterSymbolizer>
+    <RasterSymbolizer>opacity="1"</RasterSymbolizer>
   </Rule>
 </Style>
 <Layer name="z14"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>z14</StyleName>
     <Datasource>
-       <Parameter name="file">/home/charlie/Proj-18/dc-historic-census/data/1940/rasters/z23_webmerc.tif</Parameter>
+       <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z23_webmerc.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
-       <Parameter name="band">1</Parameter>
     </Datasource>
   </Layer>
 </Map>
