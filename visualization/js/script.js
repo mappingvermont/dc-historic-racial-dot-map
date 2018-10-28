@@ -11,33 +11,7 @@ function init() {
 
     var glad = L.tileLayer.canvas({
         noWrap: true,
-        attribution: 'NHGIS'
-    });
-
-    // create a UI slider for the end user to toggle the pixel range to display
-    var slider = document.getElementById('slider');
-    noUiSlider.create(slider, {
-        start: 1940,
-
-        //weekly timesteps
-        step: 10,
-        range: {
-            min: 1940,
-            max: 2010
-        }
-
-    });
-
-    // When the slider value changes, update the input and span
-    slider.noUiSlider.on('set', function(value, handle) {
-
-        yearVal = parseInt(value[0])
-
-        // update the slider display
-        document.getElementById('year').innerHTML = 'Year: ' + yearVal.toString();
-
-        // redraw the tiles without resetting
-        redraw(glad)
+        attribution: '<a href="https://www.nhgis.org/">NHGIS</a>'
     });
 
     // set bounding box for map + create it
@@ -48,14 +22,51 @@ function init() {
     var map = L.map('map', {
         noWrap: true,
         minZoom: 3,
-        maxZoom: 18,
-        maxBounds: worldBounds
+        maxZoom: 17,
+        maxBounds: worldBounds,
     }).setView([38.8961, -76.9759], 12);
+
+    // start of TimeDimension manual instantiation
+    var timeDimension = new L.TimeDimension({
+             period: "P10Y",
+	     currentTime: -946771200000, // 1940 in unix time
+             timeInterval: "1940-01-01/2010-01-01",
+                 });
+
+    // helper to share the timeDimension object between all layers
+    map.timeDimension = timeDimension; 
+    
+    var player = new L.TimeDimension.Player({
+              loop: false,
+              startOver:true
+            }, timeDimension);
+    
+    // only show year on the time slider (obviously)
+    L.Control.TimeDimensionCustom = L.Control.TimeDimension.extend({
+       _getDisplayDateFormat: function(date){
+          return date.getFullYear() + 1;
+	  }    
+    });
+
+    var timeDimensionControlOptions = {
+         player: player,
+         timeDimension: timeDimension,
+         speedSlider: false
+       };
+    
+    var timeDimensionControl = new L.Control.TimeDimensionCustom(timeDimensionControlOptions);
+    map.addControl(timeDimensionControl);
+
+    // listen for changes to the time slider; redraw map
+    map.timeDimension.on('timeload', function(data) {
+      year = new Date(data.time).getFullYear() + 1;
+      redraw(glad)
+    })
 
     // initialize the Leaflet hash plugin to add zoom/lat/lon hash to our url
     var hash = new L.Hash(map);
 
-    // add the stamen basemap
+    // add the CARTO dark basemap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', 
 	       { attribution: `&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; 
 		              <a href="https://carto.com/attributions">CARTO</a>`,
@@ -77,11 +88,8 @@ function init() {
     // overrides the default drawTile method
     glad.drawTile = function(canvas, tilePoint, zoom) {
 
-        // grab the year
-	var yearVal = parseInt(slider.noUiSlider.get())
-
         // pass these and the confidence to the custom getTile method so we can filter GLAD
-        CanvasLayer.getTile(tilePoint, zoom, canvas, yearVal);
+        CanvasLayer.getTile(tilePoint, zoom, canvas, year);
     };
 
     glad.addTo(map);

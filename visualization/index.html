@@ -5,15 +5,18 @@
     <meta charset=utf-8 />
     <title>Filtering Pixels in Leaflet</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <!-- slider library-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.0.0/nouislider.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/10.0.0/nouislider.min.js"></script>
 
     <!-- Load Leaflet from CDN-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/0.7.7/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/leaflet/0.7.7/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-hash/0.2.1/leaflet-hash.min.js"></script>
 
+    <!-- Time slider library-->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.control.min.css" />
+    <script type="text/javascript" src="https://cdn.rawgit.com/nezasa/iso8601-js-period/master/iso8601.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/socib/Leaflet.TimeDimension/master/dist/leaflet.timedimension.min.js"></script>
+
+    <!-- Our custom code-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/canvas-layer.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
@@ -21,13 +24,6 @@
 
 <body onLoad="init();">
     <div id="map"></div>
-    <div id="info-pane" class="leaflet-bar">
-        <div id="slider"></div>
-        <br>
-        <label id="year">
-            Year: 1940
-        </label>
-    </div>
 </body>
 
 </html>
