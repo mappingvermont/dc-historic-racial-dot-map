@@ -15,7 +15,7 @@ Finding / downloading / processing census data is never easy, here's my current 
 
 ### Preprocessing
 1. Unzip and save to the appropriate data/years/{year} folder.
-2. Convert shapefile to geojson using ogr2ogr
+2. Convert shapefile to geojson and project to WGS84 using ogr2ogr (optionally filter by state as well)
 3. Use the included NHGIS codebook to create a `lkp.json` file that crosswalks the NHGIS categories to our categories
 
 ### Plot random points and write to raster
