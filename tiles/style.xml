@@ -13,58 +13,58 @@
   <Parameter name="maxzoom">22</Parameter>
 </Parameters>
 
-<Style name="z13_and_above" filter-mode="first" >
+<Style name="z12_and_above" filter-mode="first" >
   <Rule>
     <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
-    <MinScaleDenominator>50000</MinScaleDenominator>
+    <MinScaleDenominator>70000</MinScaleDenominator>
   </Rule>
 </Style>
-<Layer name="z13_and_above" srs="+init=epsg:4326">
-    <StyleName>z13_and_above</StyleName>
+<Layer name="z12_and_above" srs="+init=epsg:4326">
+    <StyleName>z12_and_above</StyleName>
     <Datasource>
        <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z14.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
     </Datasource>
   </Layer>
 
-<Style name="z14" filter-mode="first" >
+<Style name="z13" filter-mode="first" >
   <Rule>
-    <MaxScaleDenominator>40000</MaxScaleDenominator>
-    <MinScaleDenominator>30000</MinScaleDenominator>
+    <MaxScaleDenominator>70000</MaxScaleDenominator>
+    <MinScaleDenominator>40000</MinScaleDenominator>
     <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
   </Rule>
 </Style>
-<Layer name="z14" srs="+init=epsg:4326">
-    <StyleName>z14</StyleName>
+<Layer name="z13" srs="+init=epsg:4326">
+    <StyleName>z13</StyleName>
     <Datasource>
        <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z15.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
     </Datasource>
   </Layer>
 
-<Style name="z15" filter-mode="first" >
+<Style name="z14_and_15" filter-mode="first" >
   <Rule>
-    <MaxScaleDenominator>20000</MaxScaleDenominator>
+    <MaxScaleDenominator>35000</MaxScaleDenominator>
     <MinScaleDenominator>10000</MinScaleDenominator>
     <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
   </Rule>
 </Style>
-<Layer name="z15" srs="+init=epsg:4326">
-    <StyleName>z15</StyleName>
+<Layer name="z14_and_15" srs="+init=epsg:4326">
+    <StyleName>z14_and_15</StyleName>
     <Datasource>
        <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z16.tif</Parameter>
        <Parameter name="type">gdal</Parameter>
     </Datasource>
   </Layer>
 
-<Style name="z16" filter-mode="first" >
+<Style name="z16_and_below" filter-mode="first" >
   <Rule>
     <MaxScaleDenominator>9000</MaxScaleDenominator>
     <RasterSymbolizer opacity="1.0"></RasterSymbolizer>
   </Rule>
 </Style>
-<Layer name="z16" srs="+init=epsg:4326">
-    <StyleName>z16</StyleName>
+<Layer name="z16_and_below" srs="+init=epsg:4326">
+    <StyleName>z16_and_below</StyleName>
     <Datasource>
        <Parameter name="file">/home/charlie/Proj-18/dc-historic-racial-dot-map/data/final/z17.tif</Parameter>
        <Parameter name="type">gdal</Parameter>

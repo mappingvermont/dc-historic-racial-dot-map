@@ -1,0 +1,82 @@
+{
+  "C9D001": {
+      "censusName": "White", 
+      "rasVal": 1
+    },
+  "C9D002": 
+    {
+      "censusName": "Black", 
+      "rasVal": 2
+    },
+  "C9D015": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 3
+    },
+  "C9D003": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 3
+    },
+  "C9D004": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 3
+    },
+  "C9D005": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 3
+    },
+  "C9D006": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D007": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D008": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D009": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D010": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D011": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D012": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D013": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D014": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 5
+    },
+  "C9D015": 
+    {
+      "censusName": "Other",
+      "rasVal": 3
+    }
+
+}

@@ -74,7 +74,11 @@ never an easy process, my current approach is as follows:
 ---
 
 todo
-build a play button for demo
-write tiles to s3; put up MVP
+write tiles to s3
+add explanatory text / storymap pane?
 
+need to trim the source data (CSVs + shps) somehow and save them
+(also could convert shps --> geojson so viewable)
+if i lose this repo i really don't want to find/download all that stuff again)
 
+also add a README with methods / caveats / etc!

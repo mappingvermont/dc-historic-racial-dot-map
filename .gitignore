@@ -1,9 +1,9 @@
 *.tif
-*.shp
-*.cpg
-*.prj
-*.dbf
-*.sbn
-*.sbx
-*.shp.xml
-data/
+*.tif.aux.xml
+
+# ignore all our temp files where we join 
+# population stats to blocks/tracks
+data/years/*/polygons/
+
+# ignore all random points we generate
+data/years/*/points/

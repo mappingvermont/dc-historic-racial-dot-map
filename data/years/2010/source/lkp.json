@@ -1,0 +1,72 @@
+{
+  "H7Z003": {
+      "censusName": "White", 
+      "rasVal": 10
+    },
+  "H7Z004": 
+    {
+      "censusName": "Black", 
+      "rasVal": 20
+    },
+  "H7Z005": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 30
+    },
+  "H7Z006": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 40
+    },
+  "H7Z007": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 40
+    },
+  "H7Z008": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 30
+    },
+  "H7Z009": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 30
+    },
+  "H7Z011": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "H7Z012": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "H7Z013": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "H7Z014": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "H7Z015": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "H7Z016": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "H7Z017": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    }
+}
+

@@ -1,0 +1,11 @@
+{
+  "BUQ001": {
+      "censusName": "White", 
+      "rasVal": 100
+    },
+  "BUQ002": 
+    {
+      "censusName": "Black", 
+      "rasVal": 200
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "B7B001": {
+      "censusName": "White", 
+      "rasVal": 100
+    },
+  "B7B002": 
+    {
+      "censusName": "Black", 
+      "rasVal": 200
+    },
+  "B7B003": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 0
+    }
+}

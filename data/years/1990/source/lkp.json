@@ -1,0 +1,52 @@
+{
+  "ET2001": {
+      "censusName": "White", 
+      "rasVal": 10
+    },
+  "ET2002": 
+    {
+      "censusName": "Black", 
+      "rasVal": 20
+    },
+  "ET2003": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 30
+    },
+  "ET2004": 
+    {
+      "censusName": "Asian/Pacific Islander",
+      "rasVal": 40
+    },
+  "ET2005": 
+    {
+      "censusName": "Multi-race and other",
+      "rasVal": 30
+    },
+  "ET2006": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "ET2007": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "ET2008": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "ET2009": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    },
+  "ET2010": 
+    {
+      "censusName": "Hispanic",
+      "rasVal": 50
+    }
+}
+
